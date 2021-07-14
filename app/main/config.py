@@ -16,7 +16,7 @@ class Config:
     # JWT AUTH CONFIG
     JWT_AUTH_USERNAME_KEY = "email"
     JWT_AUTH_PASSWORD_KEY = "password"
-    JWT_EXPIRATION_DELTA = timedelta(seconds=300)
+    JWT_EXPIRATION_DELTA = timedelta(seconds=1500)
     JWT_NOT_BEFORE_DELTA = timedelta(seconds=0)
 
 
