@@ -5,6 +5,7 @@ from .services.auth import jwt
 from app.init.db import db, flask_bcrypt
 from app.init.api import api
 from .services.user import *
+from .services.serial_port_services import *
 
 
 def create_app(config_name):
