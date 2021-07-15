@@ -33,11 +33,12 @@ If you want to run all the tests in project, type the following command:
 `python manage.py test`  
   
 After you start the server, in case you don't have any available serial port on your computer, you might want to start some virtual ones to use.  
-- On Windows you can use [com0com](http://com0com.sourceforge.net/)
+- On Windows you can use [com0com](http://com0com.sourceforge.net/) or some other paid software to create virtural port [link](https://www.virtual-serial-port.org/articles/top-6-virtual-com-port-apps/)
 - On Mac, I found this command is perfect to use: `socat PTY,link=COM8 PTY,link=COM9`
   - first you need to setup socat from brew `brew install socat`
   - then you go to root directory on your computer and run the command above to create two COM8 and COM9 ports, when you write to COM8, you can view the result
   on COM9 by open a terminal and type `screen /COM9` (if you create two ports in root directory, if not you will need to type a full path to COM9
+  - **UPDATE**: Pyserial have built-in module to read port: `python -m serial.tools.miniterm <path/to/your/port/port-name>`
 
 ## List of Apis
 1. `POST /auth`: this to get the access_token to call some other apis that require token
