@@ -10,8 +10,9 @@ BASEDIR = os.path.dirname(os.path.dirname(
 
 class Config:
     SECRET_KEY = os.environ.get("FLASK_SECRET_KEY", None)
+    ENV = os.environ.get("FLASK_ENV", "development")
     if not SECRET_KEY:
-        raise ValueError("No SECRET_KEY set for Flask application")
+        raise ValueError("SECRET_KEY is required for Flask application")
     DEBUG = False
     # JWT AUTH CONFIG
     JWT_AUTH_USERNAME_KEY = "email"
@@ -38,7 +39,12 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-    SECRET_KEY = os.environ["FLASK_SECRET_KEY_PROD"]
+    ENV = os.environ.get("FLASK_ENV", "production")
+    SECRET_KEY = os.environ.get("FLASK_SECRET_KEY_PROD", None)
+    # FIXME: move config to separated files and call config base on the file
+    # if FLASK_ENV == "production" and not SECRET_KEY:
+    #     raise ValueError(
+    #         "No SECRET_KEY set for Flask application in Production")
     # FOR DB
     # ...
 
