@@ -9,6 +9,7 @@ Jinja2==3.0.1
 Flask-Migrate==3.0.1
 Bcrypt-Flask==1.0.1
 Flask-Testing==0.8.1
+pyserial==3.5
 
 autopep8==1.5.7
 pytz==2021.1
