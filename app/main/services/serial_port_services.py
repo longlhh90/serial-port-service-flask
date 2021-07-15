@@ -45,7 +45,6 @@ class SerialPortMessage(Resource):
     @jwt_required()
     def post(self):
         args = SerialPortMessage.parser.parse_args()
-        message1 = b"hello\nLukas\n\rHaha\nGotcha\n"
         message = bytes(args["message"], 'ascii')
         response_msg = write_to_serial_port(message)
 
