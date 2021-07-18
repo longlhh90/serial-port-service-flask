@@ -57,13 +57,13 @@ def init_serial_port(port, baudrate=9600, bytesize=8, stopbits=1, parity=PARITY_
 
     _serial.open()
 
-    return "Port {0} has opened!".format(_serial.port)
+    return "Port {0} has opened!".format(_serial.port), 200
 
 
 def write_to_serial_port(message):
     global _serial
     if _serial.is_open:
         _serial.write(message)
-        return "Write to {} successfully".format(_serial.port)
+        return "Write to {0} successfully".format(_serial.port), 200
 
-    return "Port {0} is not open. Please open the port first".format(_serial.port)
+    return "Port {0} is not open. Please open the port first".format(_serial.port), 400
