@@ -46,9 +46,9 @@ class SerialPortMessage(Resource):
     def post(self):
         args = SerialPortMessage.parser.parse_args()
         message = bytes(args["message"], 'ascii')
-        response_msg = write_to_serial_port(message)
+        response_msg, status_code = write_to_serial_port(message)
 
-        return {"message": response_msg}, 200
+        return {"message": response_msg}, status_code
 
 
 @api.resource('/init-port/')
@@ -116,5 +116,5 @@ class InitSerialPort(Resource):
     @jwt_required()
     def post(self):
         args = Collections.drop_none(InitSerialPort.parser.parse_args())
-        response_msg = init_serial_port(**args)
-        return {"message": response_msg}, 200
+        response_msg, status_code = init_serial_port(**args)
+        return {"message": response_msg}, status_code
