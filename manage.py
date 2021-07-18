@@ -11,9 +11,13 @@ def run(flask_app_env):
     # app.app_context().push()
     app.run()
 
+# NOTE: legaxy test. Move to use pytest
+
 
 def test():
     """Runs the unit tests."""
+    print("Please run command: python -m pytest or pytest to run all the test")
+    return
     tests = unittest.TestLoader().discover('app/test', pattern='test*.py')
     result = unittest.TextTestRunner(verbosity=2).run(tests)
     if result.wasSuccessful():
