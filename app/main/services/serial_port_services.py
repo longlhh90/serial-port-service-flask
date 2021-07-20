@@ -88,7 +88,7 @@ class InitSerialPort(Resource):
     parser.add_argument(
         'parity',
         choices=serial.Serial.PARITIES,
-        type=int,
+        type=str,
         required=False,
         help="Bad choice: {error_msg}." +
         "The choices are: {}".format(serial.Serial.PARITIES)
