@@ -27,10 +27,12 @@ Using python and pip will now draw from the local virtual environment instead of
 `requirements.txt` represents the python dependencies required to run the project
 
 ## How to start server
-In the root directory, open terminal and type `python manage.py run -s dev`
-regarding option of -s (setting), we have 3 options: dev, test, prod which will launch project with the config you want  
+Create dotenv (.env) file and set "FLASK_SECRET_KEY" and "FLASK_SECRET_KEY_PROD" (if you want to use `prod` option)  
+In the root directory, open terminal and type `python manage.py run --s dev`
+regarding option of --s (--setting), we have 3 options: dev, test, prod which will launch project with the config you want  
 If you want to run all the tests in project, type the following command:  
-`python manage.py test`  
+`python manage.py test`
+**UPDATE**: if you wanna run test please use `pytest` or `python -m pytest`  
   
 After you start the server, in case you don't have any available serial port on your computer, you might want to start some virtual ones to use.  
 - On Windows you can use [com0com](http://com0com.sourceforge.net/) or some other paid software to create virtural port [link](https://www.virtual-serial-port.org/articles/top-6-virtual-com-port-apps/)
@@ -69,9 +71,21 @@ After you start the server, in case you don't have any available serial port on 
     "timeout": 1000
 }
 ```
+```
+header needs to have
+{
+    "Authorization": "JWT {access_token}"
+}
+```
 5. `POST /send-msg/`: to send a control message to the serial port
 ```json
 {
   "message": "The message cannot have more than 500 characters including special ones like space"
+}
+```
+```
+header needs to have
+{
+    "Authorization": "JWT {access_token}"
 }
 ```
